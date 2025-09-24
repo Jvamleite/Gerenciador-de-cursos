@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GerenciadorDeCursos.Domain\GerenciadorDeCursos.Domain.csproj" />
+    <ProjectReference Include="..\GerenciadorDeCursos.Repositories\GerenciadorDeCursos.Repositories.csproj" />
+  </ItemGroup>
+
 </Project>
