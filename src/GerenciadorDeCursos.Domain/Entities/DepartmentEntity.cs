@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GerenciadorDeCursos.Domain.Entities.Course;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GerenciadorDeCursos.Domain.Entities
@@ -14,6 +15,8 @@ namespace GerenciadorDeCursos.Domain.Entities
 
         [Required]
         public string Code { get; init; }
+
+        public IList<CourseEntity> Courses { get; set; } = [];
 
         public DepartmentEntity(
             string name,

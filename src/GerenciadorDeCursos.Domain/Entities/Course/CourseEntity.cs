@@ -64,8 +64,10 @@ namespace GerenciadorDeCursos.Domain.Entities.Course
             Vacancies = vacancies;
         }
 
-        public static string GenerateCode()
-            => throw new NotImplementedException();
+        public string GenerateCode()
+        {
+            return $"{Department.Code}{Department.Courses.IndexOf(this) + 1}";
+        }
 
         public void ChangeStatus()
         {
