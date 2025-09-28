@@ -1,18 +1,22 @@
 ﻿using GerenciadorDeCursos.Domain.Entities.Course;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GerenciadorDeCursos.Domain.Entities.User
 {
-    internal class StudentEntity(string name, string lastName, string cpf, string email) :
+    [Table("Students")]
+    public class StudentEntity(string name, string lastName, string cpf, string email) :
         UserEntity(name, lastName, cpf, email)
     {
+        [Required]
         private Guid RegistrationNumber { get; } = Guid.NewGuid();
 
-        private IList<CourseEntity> EnrroledCourses { get; } = [];
+        private IList<CourseEntity> EnrolledCourses { get; } = [];
 
-        public void EnrollCourse(CourseEntity course) => EnrroledCourses.Add(course);
+        public void EnrollCourse(CourseEntity course) => EnrolledCourses.Add(course);
 
-        public void UnenrollCourse(CourseEntity course) => EnrroledCourses.Remove(course);
+        public void UnenrollCourse(CourseEntity course) => EnrolledCourses.Remove(course);
 
-        public IList<CourseEntity> GetEnrroledCourses() => EnrroledCourses;
+        public IList<CourseEntity> GetEnrroledCourses() => EnrolledCourses;
     }
 }

@@ -1,19 +1,46 @@
 ﻿using GerenciadorDeCursos.Domain.Entities.Course.Enums;
 using GerenciadorDeCursos.Domain.Entities.User;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GerenciadorDeCursos.Domain.Entities.Course
 {
-    internal class CourseEntity
+    [Table("Courses")]
+    public class CourseEntity
     {
+        [Key]
         public Guid Id { get; } = Guid.NewGuid();
+
+        [Required]
         public string Code { get; init; }
+
+        [Required]
         public string Title { get; init; }
+
+        [Required]
         public DateTime InitialDate { get; init; }
+
+        [Required]
         public DateTime FinalDate { get; init; }
-        public Status Status { get; set; }
+
+        [Required]
+        public Guid DepartmentId { get; init; }
+
+        [ForeignKey("DepartmentId")]
+        [Required]
+        public DepartmentEntity Department { get; init; }
+
+        [Required]
+        public Status Status { get; set; } = Status.Previsto;
+
         public Guid TeacherId { get; init; }
+
+        [ForeignKey("TeacherId")]
         public TeacherEntity Teacher { get; init; }
+
         public IList<StudentEntity> Students { get; init; } = [];
+
+        [Required]
         public int Vacancies { get; set; }
 
         public CourseEntity(
@@ -29,7 +56,6 @@ namespace GerenciadorDeCursos.Domain.Entities.Course
             Teacher = teacher;
             InitialDate = initialDate;
             FinalDate = finalDate;
-            Status = Status.Previsto;
             Vacancies = vacancies;
         }
 

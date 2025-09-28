@@ -1,13 +1,30 @@
-﻿namespace GerenciadorDeCursos.Domain.Entities.User
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace GerenciadorDeCursos.Domain.Entities.User
 {
-    internal class UserEntity
+    [Table("User")]
+    public class UserEntity
     {
+        [Key]
         public Guid Id { get; init; }
+
+        [Required]
         public string Name { get; init; }
+
+        [Required]
         public string LastName { get; init; }
+
+        [Required]
         public string CPF { get; init; }
+
+        [Required]
         public string Email { get; init; }
+
+        [Required]
         public string Username { get; init; }
+
+        [Required]
         public string Password { get; init; }
 
         public UserEntity(
