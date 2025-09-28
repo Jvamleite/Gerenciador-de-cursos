@@ -27,6 +27,9 @@ namespace GerenciadorDeCursos.Domain.Entities.User
         [Required]
         public string Password { get; init; }
 
+        public UserEntity()
+        { }
+
         public UserEntity(
             string name,
             string lastName,

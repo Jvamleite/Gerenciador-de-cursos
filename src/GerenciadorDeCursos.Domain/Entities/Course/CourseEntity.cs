@@ -9,7 +9,7 @@ namespace GerenciadorDeCursos.Domain.Entities.Course
     public class CourseEntity
     {
         [Key]
-        public Guid Id { get; } = Guid.NewGuid();
+        public Guid Id { get; private set; } = Guid.NewGuid();
 
         [Required]
         public string Code { get; init; }
@@ -43,17 +43,22 @@ namespace GerenciadorDeCursos.Domain.Entities.Course
         [Required]
         public int Vacancies { get; set; }
 
+        public CourseEntity()
+        { }
+
         public CourseEntity(
             string title,
             DateTime initialDate,
             DateTime finalDate,
             TeacherEntity teacher,
+            DepartmentEntity department,
             int vacancies
             )
         {
             Code = GenerateCode();
             Title = title;
             Teacher = teacher;
+            Department = department;
             InitialDate = initialDate;
             FinalDate = finalDate;
             Vacancies = vacancies;

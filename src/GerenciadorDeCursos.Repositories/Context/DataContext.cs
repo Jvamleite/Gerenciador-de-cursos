@@ -4,10 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GerenciadorDeCursos.Repositories.Context
 {
-    internal class DataContext : DbContext
+    public class DataContext : DbContext
     {
         public DbSet<CourseEntity> Course { get; set; }
         public DbSet<UserEntity> User { get; set; }
+
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
