@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GerenciadorDeCursos.Domain\GerenciadorDeCursos.Domain.csproj" />
+    <ProjectReference Include="..\GerenciadorDeCursos.Domain\GerenciadorDeCursos.Domain.Model.csproj" />
     <ProjectReference Include="..\GerenciadorDeCursos.Repositories\GerenciadorDeCursos.Repositories.csproj" />
   </ItemGroup>
 
