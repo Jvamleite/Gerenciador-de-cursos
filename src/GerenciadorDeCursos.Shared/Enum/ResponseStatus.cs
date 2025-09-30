@@ -8,6 +8,7 @@
         Forbidden = 403,
         NotFound = 404,
         RequestTimeout = 408,
-        InternalServerError = 500
+        InternalServerError = 500,
+        Created = 201
     }
 }

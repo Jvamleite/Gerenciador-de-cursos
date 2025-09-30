@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GerenciadorDeCursos.Domain\GerenciadorDeCursos.Domain.Model.csproj" />
+  </ItemGroup>
+
 </Project>

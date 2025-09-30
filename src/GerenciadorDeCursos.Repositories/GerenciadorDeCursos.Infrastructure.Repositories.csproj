@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GerenciadorDeCursos.Domain.Repositories\GerenciadorDeCursos.Domain.Repositories.csproj" />
     <ProjectReference Include="..\GerenciadorDeCursos.Domain\GerenciadorDeCursos.Domain.Model.csproj" />
   </ItemGroup>
 

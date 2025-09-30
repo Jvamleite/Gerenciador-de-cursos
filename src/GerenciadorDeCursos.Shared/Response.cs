@@ -1,6 +1,5 @@
 ﻿using GerenciadorDeCursos.Shared.Enums;
 using System.Text.Json.Serialization;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GerenciadorDeCursos.Shared
 {
@@ -27,14 +26,11 @@ namespace GerenciadorDeCursos.Shared
 
         public string Message { get; set; }
 
-        public Error[] Errors { get; set; }
-
         [JsonIgnore]
         public object Result { get; set; }
 
         [JsonIgnore]
-        public bool IsSuccess => (Errors == null || Errors.Length == 0) &&
-                                 Status == ResponseStatus.Ok;
+        public bool IsSuccess => Status == ResponseStatus.Ok || Status == ResponseStatus.Created;
     }
 
     public class Response<TResult> : Response
