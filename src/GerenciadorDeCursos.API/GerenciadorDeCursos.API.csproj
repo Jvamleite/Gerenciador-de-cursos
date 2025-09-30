@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GerenciadorDeCursos.Application\GerenciadorDeCursos.Application.csproj" />
-    <ProjectReference Include="..\GerenciadorDeCursos.Repositories\GerenciadorDeCursos.Infrastructure.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

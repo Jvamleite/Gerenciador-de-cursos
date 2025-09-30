@@ -3,7 +3,7 @@ using GerenciadorDeCursos.Application.Dtos.Course.Response;
 
 namespace GerenciadorDeCursos.Application.Interfaces
 {
-    internal interface ICreateCourseUseCase : IUseCase<CreateCourseRequestDto, CourseResponseDto>
+    public interface ICreateCourseUseCase : IUseCase<CreateCourseRequestDto, CourseResponseDto>
     {
     }
 }

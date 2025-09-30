@@ -1,23 +1,27 @@
 ﻿using GerenciadorDeCursos.API.Models;
+using GerenciadorDeCursos.Application.Dtos.Course.Request;
 using GerenciadorDeCursos.Application.Dtos.Course.Response;
+using GerenciadorDeCursos.Application.Interfaces;
 using GerenciadorDeCursos.Shared;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciadorDeCursos.Controllers
 {
-    public class CourseController(IActionResultConverter actionResultConverter) : BaseController(actionResultConverter)
+    public class CourseController(IActionResultConverter actionResultConverter)
+        : BaseController(actionResultConverter)
     {
         /// <summary>
-        /// Criar curso (Somente autorizado para professores administradores)
+        /// Criar curso
         /// </summary>
         /// <returns></returns>
         [ProducesResponseType(typeof(CourseResponseDto), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(Response), StatusCodes.Status400BadRequest)]
         [HttpPost]
-        public async Task<IActionResult> CreateCourse([FromBody] CreateCourseRequest createCourseRequest, [FromServices] ICreateCourseUseCase _useCase)
+        public async Task<IActionResult> CreateCourse(
+            [FromBody] CreateCourseRequestDto createCourseRequest,
+            [FromServices] ICreateCourseUseCase _useCase)
         {
-            _logger.LogWarning("Iniciando a criação de um novo curso");
-            var response = await _useCase.CreateCourseAsync(createCourseRequest);
+            Response<CourseResponseDto> response = await _useCase.Execute(createCourseRequest);
 
             return _actionResultConverter.Convert(response);
         }
