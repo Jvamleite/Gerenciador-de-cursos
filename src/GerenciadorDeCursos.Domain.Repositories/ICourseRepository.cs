@@ -3,5 +3,8 @@ using GerenciadorDeCursos.Domain.Repositories;
 
 namespace GerenciadorDeCursos.Infrastructure.Repositories.Interfaces
 {
-    public interface ICourseRepository : IRepository<CourseEntity>;
+    public interface ICourseRepository : IRepository<CourseEntity>
+    {
+        Task<CourseEntity> GetCourseByTitleAsync(string title);
+    }
 }

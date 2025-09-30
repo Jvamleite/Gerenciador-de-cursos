@@ -7,9 +7,9 @@ namespace GerenciadorDeCursos.Infrastructure.Repositories.Repositories
     internal class CourseRepository(
         DataContext context) : ICourseRepository
     {
-        public async Task AddAsync(CourseEntity entity)
+        public async Task<CourseEntity> AddAsync(CourseEntity entity)
         {
-            await context.Courses.AddAsync(entity);
+            return (await context.Courses.AddAsync(entity)).Entity;
         }
 
         public Task DeleteAsync(int id)
@@ -25,6 +25,11 @@ namespace GerenciadorDeCursos.Infrastructure.Repositories.Repositories
         public Task<CourseEntity> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<CourseEntity> GetCourseByTitleAsync(string title)
+        {
+            return await Task.FromResult(context.Courses.FirstOrDefault(c => c.Title == title));
         }
 
         public Task UpdateAsync(CourseEntity entity)
