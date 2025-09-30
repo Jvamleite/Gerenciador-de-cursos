@@ -6,8 +6,8 @@ namespace GerenciadorDeCursos.Repositories.Context
 {
     public class DataContext : DbContext
     {
-        public DbSet<CourseEntity> Course { get; set; }
-        public DbSet<UserEntity> User { get; set; }
+        public DbSet<CourseEntity> Courses { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {

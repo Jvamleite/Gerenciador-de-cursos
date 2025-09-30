@@ -1,6 +1,6 @@
 ﻿namespace GerenciadorDeCursos.Domain.Repositories
 {
-    internal interface IRepository<T>
+    public interface IRepository<T>
     {
         Task<IEnumerable<T>> GetAllAsync();
 
