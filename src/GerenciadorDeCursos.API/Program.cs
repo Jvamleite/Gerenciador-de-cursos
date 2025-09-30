@@ -1,11 +1,20 @@
+using GerenciadorDeCursos.API.Configurations;
 using GerenciadorDeCursos.Repositories.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(opt => opt.SuppressAsyncSuffixInActionNames = false)
+    .AddJsonOptions(opt =>
+    {
+        opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        opt.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    });
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.ConfigureSwagger();
+builder.Services.ConfigureRepository();
+builder.Services.ConfigureApi();
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -40,7 +49,7 @@ catch (Exception ex)
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GerenciadorDeCursos.API v1"));
 }
 
 app.UseHttpsRedirection();
@@ -49,4 +58,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+await app.RunAsync();

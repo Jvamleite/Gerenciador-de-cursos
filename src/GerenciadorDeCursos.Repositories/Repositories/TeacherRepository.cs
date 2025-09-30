@@ -4,7 +4,7 @@ using GerenciadorDeCursos.Repositories.Context;
 
 namespace GerenciadorDeCursos.Infrastructure.Repositories.Repositories
 {
-    internal class TeacherRepository : ITeacherRepository
+    public class TeacherRepository : ITeacherRepository
     {
         private readonly DataContext _context;
 
@@ -14,7 +14,7 @@ namespace GerenciadorDeCursos.Infrastructure.Repositories.Repositories
             _context = context;
         }
 
-        public Task AddAsync(TeacherEntity entity)
+        public Task<TeacherEntity> AddAsync(TeacherEntity entity)
         {
             throw new NotImplementedException();
         }

@@ -4,7 +4,7 @@ using GerenciadorDeCursos.Repositories.Context;
 
 namespace GerenciadorDeCursos.Infrastructure.Repositories.Repositories
 {
-    internal class CourseRepository(
+    public class CourseRepository(
         DataContext context) : ICourseRepository
     {
         public async Task<CourseEntity> AddAsync(CourseEntity entity)
