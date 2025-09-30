@@ -9,13 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorDeCursos.API", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorDeCursos.Domain.Model", "src\GerenciadorDeCursos.Domain\GerenciadorDeCursos.Domain.Model.csproj", "{A53DA70A-B0EE-45E1-8130-FCBA641C1F0E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorDeCursos.Repositories", "src\GerenciadorDeCursos.Repositories\GerenciadorDeCursos.Repositories.csproj", "{74CB6A16-9E6B-47A5-84D0-F2C5616A4C66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorDeCursos.Infrastructure.Repositories", "src\GerenciadorDeCursos.Repositories\GerenciadorDeCursos.Infrastructure.Repositories.csproj", "{74CB6A16-9E6B-47A5-84D0-F2C5616A4C66}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorDeCursos.Application", "src\GerenciadorDeCursos.Application\GerenciadorDeCursos.Application.csproj", "{92396BDD-014A-4B81-9CCD-0EB8843792C4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorDeCursos.Shared", "src\GerenciadorDeCursos.Shared\GerenciadorDeCursos.Shared.csproj", "{6FF00D89-7C96-449C-9796-0B6915499993}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeCursos.Domain.Services", "src\GerenciadorDeCursos.Domain.Services\GerenciadorDeCursos.Domain.Services.csproj", "{68344034-C382-4C5B-A8B7-2168FB6B21F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorDeCursos.Domain.Services", "src\GerenciadorDeCursos.Domain.Services\GerenciadorDeCursos.Domain.Services.csproj", "{68344034-C382-4C5B-A8B7-2168FB6B21F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeCursos.Domain.Repositories", "src\GerenciadorDeCursos.Domain.Repositories\GerenciadorDeCursos.Domain.Repositories.csproj", "{E1753BF5-664E-438A-A64A-F96A1ADBCD2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{68344034-C382-4C5B-A8B7-2168FB6B21F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68344034-C382-4C5B-A8B7-2168FB6B21F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68344034-C382-4C5B-A8B7-2168FB6B21F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1753BF5-664E-438A-A64A-F96A1ADBCD2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1753BF5-664E-438A-A64A-F96A1ADBCD2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1753BF5-664E-438A-A64A-F96A1ADBCD2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1753BF5-664E-438A-A64A-F96A1ADBCD2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{92396BDD-014A-4B81-9CCD-0EB8843792C4} = {797FE712-82E7-439D-8E25-B1564EFF56FD}
 		{6FF00D89-7C96-449C-9796-0B6915499993} = {797FE712-82E7-439D-8E25-B1564EFF56FD}
 		{68344034-C382-4C5B-A8B7-2168FB6B21F0} = {797FE712-82E7-439D-8E25-B1564EFF56FD}
+		{E1753BF5-664E-438A-A64A-F96A1ADBCD2F} = {797FE712-82E7-439D-8E25-B1564EFF56FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F197406B-1504-4AC6-8A75-1E46B16D0273}
