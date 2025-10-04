@@ -9,7 +9,7 @@ namespace GerenciadorDeCursos.Domain.Entities.Course
     public class CourseEntity
     {
         [Key]
-        public Guid Id { get; private set; } = Guid.NewGuid();
+        public Guid Id { get; } = Guid.NewGuid();
 
         [Required]
         public string Code { get; init; }
