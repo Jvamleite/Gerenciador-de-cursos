@@ -8,7 +8,10 @@ namespace GerenciadorDeCursos.API.Configurations
         public static void ConfigureApi(this IServiceCollection services)
         {
             services.AddSingleton<IActionResultConverter, ActionResultConverter>();
-            services.AddAutoMapper(typeof(MapperDtoEntityConfigure));
+            services.AddAutoMapper(cfg =>
+            {
+                cfg.AddProfile<MapperDtoEntityConfigure>();
+            });
         }
     }
 }

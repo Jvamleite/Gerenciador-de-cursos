@@ -1,4 +1,5 @@
 ﻿using GerenciadorDeCursos.Domain.Repositories;
+using GerenciadorDeCursos.Domain.Repositories.Shared;
 using GerenciadorDeCursos.Infrastructure.Repositories.Interfaces;
 using GerenciadorDeCursos.Infrastructure.Repositories.Repositories;
 
@@ -11,6 +12,7 @@ namespace GerenciadorDeCursos.API.Configurations
             services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }
