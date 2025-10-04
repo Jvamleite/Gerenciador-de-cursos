@@ -4,6 +4,8 @@ using GerenciadorDeCursos.Application.Dtos.Course.Response;
 using GerenciadorDeCursos.Application.Interfaces;
 using GerenciadorDeCursos.Application.Shared;
 using GerenciadorDeCursos.Domain.Entities.Course;
+using GerenciadorDeCursos.Domain.Model.Exceptions;
+using GerenciadorDeCursos.Domain.Repositories;
 using GerenciadorDeCursos.Domain.Repositories.Shared;
 using GerenciadorDeCursos.Infrastructure.Repositories.Interfaces;
 using GerenciadorDeCursos.Shared;
@@ -16,16 +18,19 @@ namespace GerenciadorDeCursos.Application.UseCases
     {
         private readonly ICourseRepository _courseRepository;
         private readonly ITeacherRepository _teacherRepository;
+        private readonly IDepartmentRepository _departmentRepository;
 
         public CreateCourseUseCase(
             ICourseRepository courseRepository,
             ITeacherRepository teacherRepository,
+            IDepartmentRepository departmentRepository,
             IMapper mapper,
             IUnitOfWork unitOfWork)
         : base(mapper, unitOfWork)
         {
             _courseRepository = courseRepository;
             _teacherRepository = teacherRepository;
+            _departmentRepository = departmentRepository;
         }
 
         protected override async Task<Response<CourseResponseDto>> ExecutaRegraDeNegocio(CreateCourseRequestDto request)
@@ -34,6 +39,8 @@ namespace GerenciadorDeCursos.Application.UseCases
 
             await VerificaSeProfessorEstaCadastrado(request.TeachersName);
 
+            await VerificaSeDepartamentoEstaCadastrado(request.DepartmentsCode);
+
             CourseEntity cursoCriado = await CriaCurso(request);
 
             return MapearResponse(cursoCriado);
@@ -41,12 +48,12 @@ namespace GerenciadorDeCursos.Application.UseCases
 
         internal async Task VerificaSeCursoJaExiste(string title)
         {
-            _ = (await _courseRepository.GetCourseByTitleAsync(title)) ?? throw new ArgumentException("Curso ja cadastrado");
+            _ = (await _courseRepository.GetCourseByTitleAsync(title)) ?? throw new BusinessException("Curso ja cadastrado");
         }
 
         internal async Task VerificaSeProfessorEstaCadastrado(string name)
         {
-            _ = (await _teacherRepository.GetTeacherByName(name)) ?? throw new ArgumentException("Não existe professor cadastrado com o nome fornecido");
+            _ = (await _teacherRepository.GetTeacherByName(name)) ?? throw new BusinessException("Não existe professor cadastrado com o nome fornecido");
         }
 
         internal async Task<CourseEntity> CriaCurso(CreateCourseRequestDto dto)
@@ -54,6 +61,11 @@ namespace GerenciadorDeCursos.Application.UseCases
             CourseEntity course = _mapper.Map<CourseEntity>(dto);
 
             return await _courseRepository.AddAsync(course);
+        }
+
+        internal async Task VerificaSeDepartamentoEstaCadastrado(string code)
+        {
+            _ = (await _departmentRepository.GetByCodeAsync(code)) ?? throw new BusinessException("Departamento não cadastrado");
         }
 
         internal Response<CourseResponseDto> MapearResponse(CourseEntity course)
