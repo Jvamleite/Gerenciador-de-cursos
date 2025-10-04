@@ -4,10 +4,10 @@ using GerenciadorDeCursos.Repositories.Context;
 
 namespace GerenciadorDeCursos.Infrastructure.Repositories.Repositories
 {
-    internal class DepartmentRepository(
+    public class DepartmentRepository(
         DataContext context) : IDepartmentRepository
     {
-        private DataContext _context = context;
+        private readonly DataContext _context = context;
 
         public Task<DepartmentEntity> AddAsync(DepartmentEntity entity)
         {
@@ -26,7 +26,7 @@ namespace GerenciadorDeCursos.Infrastructure.Repositories.Repositories
 
         public async Task<DepartmentEntity> GetByCodeAsync(string code)
         {
-            return await Task.FromResult(_context.Departments.FirstOrDefault(d => d.Code == code)));
+            return await Task.FromResult(_context.Departments.FirstOrDefault(d => d.Code == code));
         }
 
         public Task<DepartmentEntity> GetByIdAsync(int id)
