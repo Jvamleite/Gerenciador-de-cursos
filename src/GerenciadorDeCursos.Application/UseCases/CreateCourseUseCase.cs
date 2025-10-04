@@ -13,7 +13,7 @@ using GerenciadorDeCursos.Shared.Enums;
 
 namespace GerenciadorDeCursos.Application.UseCases
 {
-    internal class CreateCourseUseCase
+    public class CreateCourseUseCase
         : UseCaseBase<CreateCourseRequestDto, CourseResponseDto>, ICreateCourseUseCase
     {
         private readonly ICourseRepository _courseRepository;

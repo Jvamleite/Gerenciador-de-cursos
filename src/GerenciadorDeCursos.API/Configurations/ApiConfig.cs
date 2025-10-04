@@ -1,5 +1,5 @@
 ﻿using GerenciadorDeCursos.API.Models;
-using Microsoft.Extensions.DependencyInjection;
+using GerenciadorDeCursos.Domain.Model.Mapper;
 
 namespace GerenciadorDeCursos.API.Configurations
 {
@@ -8,6 +8,7 @@ namespace GerenciadorDeCursos.API.Configurations
         public static void ConfigureApi(this IServiceCollection services)
         {
             services.AddSingleton<IActionResultConverter, ActionResultConverter>();
+            services.AddAutoMapper(typeof(MapperDtoEntityConfigure));
         }
     }
 }

@@ -6,7 +6,7 @@ using GerenciadorDeCursos.Shared.Enums;
 
 namespace GerenciadorDeCursos.Application.Shared
 {
-    internal abstract class UseCaseBase<TRequest, TResponse>(
+    public abstract class UseCaseBase<TRequest, TResponse>(
         IMapper mapper,
         IUnitOfWork unitOfWork)
     {
